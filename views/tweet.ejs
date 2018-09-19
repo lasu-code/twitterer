@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        <%= title %>
+    </title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+    Hello
+    <%= title %>
+    <h1>
+        <%= title %>
+    </h1>
+    <p>Welcome to
+        <%= title %>
+    </p>
+
+    <% for(let i=0; i < tweets.length; i++) { %>
+    <ul>
+        <li>
+            <%= tweets[i].body %>
+        </li>
+        <li>
+            <%= tweets[i].user %>
+        </li>
+        <li>
+            <%= tweets[i].date %>
+        </li>
+    </ul>
+
+    <% } %>
+
+</body>
+
+</html>
