@@ -17,7 +17,7 @@ let userTweets = [
 ]
 
 exports.homePage = function(req, res, next) {
-  res.render('index', { title: 'LASU' });
+  res.render('index', { title: 'LASUCode' });
 };
 
 exports.tweets = function(req, res, next) {
