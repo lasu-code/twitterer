@@ -8,5 +8,16 @@
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
     <h2>Why is everybody looking quiet</h2>
+
+    <div>
+      <form action="/tweet" method="POST">
+        <input type="text" placeholder="username" name="username"> <hr>
+        <textarea placeholder="Tweets" name="tweet">
+
+        </textarea> <hr>
+        <!-- <input type="text" placeholder="tweet"><hr> -->
+        <input type="submit">
+      </form>
+    </div>
   </body>
 </html>
