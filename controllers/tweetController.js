@@ -1,4 +1,6 @@
-let Tweet = require('../models/tweet');
+// let Tweet = require('../models/tweet');
+const mongoose = require('mongoose');
+const Tweet = mongoose.model('Tweet');
 
 let userTweets = [
   {
@@ -33,5 +35,12 @@ exports.profilePage = function(req, res, next) {
 
 exports.tweets = function(req, res, next) {
     console.log(req.body);
-    res.render('tweet', { title: 'My tweets', tweets: userTweets });
+    let tweet = {
+        body: req.body.tweet,
+        user: req.body.username
+    }
+    let data = new Tweet(tweet);
+    data.save();
+    res.redirect('/')
+    // res.render('tweet', { title: 'My tweets', tweets: userTweets });
   };
