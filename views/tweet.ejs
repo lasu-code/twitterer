@@ -29,6 +29,13 @@
         <li>
             <%= tweets[i].createdDate %>
         </li>
+        <form action="/deleteTweet" method="POST">
+            <input type="hidden" name="tweetId" value=<%= tweets[i]._id %> >
+            <button>
+                Delete Tweet
+            </button>
+        </form>
+        
     </ul>
 
     <% } %>

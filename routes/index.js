@@ -8,8 +8,10 @@ const tweetController = require('../controllers/tweetController');
 // });
 
 router.get('/', tweetController.homePage);
-router.get('/tweet', tweetController.tweets);
+router.get('/tweet', tweetController.getTweets);
 router.post('/tweet', tweetController.tweets);
+router.post('/deleteTweet', tweetController.deleteTweet);
+
 
 router.get('/:name', tweetController.profilePage);
 

@@ -21,12 +21,7 @@ let userTweets = [
 ];
 
 exports.homePage = function(req, res, next) {
-  Tweet.find().
-    then(function(tweets) {
-      console.log(tweets)
-      res.render('tweet', { title: 'My tweets', tweets: tweets });
-      // res.render('index', { title: 'LASUCode' });
-    })
+  res.render('index', { title: 'LASUCode' });
 };
 
 // exports.tweets = function(req, res, next) {
@@ -39,13 +34,28 @@ exports.profilePage = function(req, res, next) {
 };
 
 exports.tweets = function(req, res, next) {
-    console.log(req.body);
-    let tweet = {
-        body: req.body.tweet,
-        user: req.body.username
-    }
-    let data = new Tweet(tweet);
-    data.save();
-    res.redirect('/')
-    // res.render('tweet', { title: 'My tweets', tweets: userTweets });
+  console.log(req.body);
+  let tweet = {
+    body: req.body.tweet,
+    user: req.body.username,
   };
+  let data = new Tweet(tweet);
+  data.save();
+  res.redirect('/tweet');
+};
+
+exports.getTweets = function(req, res, next) {
+  Tweet.find().then(function(tweets) {
+    // console.log(tweets);
+    res.render('tweet', { title: 'My tweets', tweets: tweets });
+  });
+};
+
+exports.deleteTweet = function(req, res, next) {
+  console.log(req.body);
+  
+  Tweet.findByIdAndRemove(req.body.tweetId, function() {
+    res.redirect('/tweet');
+  })
+  
+};
