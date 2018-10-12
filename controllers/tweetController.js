@@ -53,9 +53,27 @@ exports.getTweets = function(req, res, next) {
 
 exports.deleteTweet = function(req, res, next) {
   console.log(req.body);
+
+  Tweet.findByIdAndRemove(req.body.tweetId).exec();
+  res.redirect('/tweet');
   
-  Tweet.findByIdAndRemove(req.body.tweetId, function() {
-    res.redirect('/tweet');
-  })
+  // Tweet.findByIdAndRemove(req.body.tweetId, function() {
+  //   res.redirect('/tweet');
+  // });
   
 };
+
+// router.post('/update', function(req, res, next) {
+//   var id = req.body.id;
+
+//   UserData.findById(id, function(err, doc) {
+//     if (err) {
+//       console.error('error, no entry found');
+//     }
+//     doc.title = req.body.title;
+//     doc.content = req.body.content;
+//     doc.author = req.body.author;
+//     doc.save();
+//   })
+//   res.redirect('/');
+// });
