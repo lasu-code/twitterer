@@ -6,7 +6,7 @@ exports.signUp = function(req, res, next) {
   let user = {
     email: req.body.email,
     username: req.body.username,
-    password: req.body.password
+    password: User.generateHash(req.body.password)
   };
   let data = new User(user);
   data.save();

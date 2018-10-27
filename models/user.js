@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const bcrypt = require('bcrypt');
 
 let UserSchema = new Schema({
     username: String,
@@ -11,13 +12,17 @@ let UserSchema = new Schema({
     }
 });
 
+
 UserSchema.methods.generateHash = function(password) {
     return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
 };
 
-// checking if password is valid
-UserSchema.methods.validPassword = function(password) {
-    return bcrypt.compareSync(password, this.local.password);
-};
+
+
+
+// // checking if password is valid
+// UserSchema.methods.validPassword = function(password) {
+//     return bcrypt.compareSync(password, this.local.password);
+// };
 
 module.exports = mongoose.model('User', UserSchema);
