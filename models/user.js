@@ -14,10 +14,12 @@ let UserSchema = new Schema({
 
 
 UserSchema.methods.generateHash = function(password) {
-    return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
+    return bcrypt.hashSync(password, bcrypt.genSaltSync(8));
 };
 
-
+UserSchema.methods.validatePassword = function(plainPassword, hashPassword) {
+    return bcrypt.compareSync(plainPassword, hashPassword)
+}
 
 
 // // checking if password is valid

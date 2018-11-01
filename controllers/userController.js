@@ -5,11 +5,11 @@ exports.signUp = function(req, res, next) {
   console.log(req.body);
   let user = {
     email: req.body.email,
-    username: req.body.username,
-    password: User.generateHash(req.body.password)
+    username: req.body.username
   };
-  let data = new User(user);
-  data.save();
+  let newUser = new User(user);
+  newUser.password = newUser.generateHash(req.body.password);
+  newUser.save();
   res.redirect('/tweet');
 //   res.render('signup', { title: 'My tweets', message: '' });
 };
